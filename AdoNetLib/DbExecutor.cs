@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Microsoft.Data.SqlClient;
 
 namespace AdoNetLib
@@ -25,6 +20,27 @@ namespace AdoNetLib
             var ds = new DataSet();
             adapter.Fill(ds);
             return ds.Tables[0];
+        }
+
+        // метод, возвращающий в «основную» программу объект для чтения результата
+        public SqlDataReader SelectAllCommandReader(string table)
+        {
+            var command = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = "select * from " + table,
+                Connection = connector.GetConnection()
+            };
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                return reader;
+            }
+
+            return null;
+
         }
     }
 }
