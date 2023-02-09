@@ -2,42 +2,113 @@
 {
     public class Program
     {
+        private static Manager manager;
+
+        public enum Commands
+        {
+            stop,
+            add,
+            delete,
+            update,
+            show
+        }
+
         static void Main(string[] args)
         {
-            var manager = new Manager();
+            manager = new Manager();
 
             manager.Connect();
 
-            manager.ShowDataUsers();
+            Console.WriteLine("Список команд для работы консоли:");
+            Console.WriteLine(Commands.stop + ": прекращение работы");
+            Console.WriteLine(Commands.add + ": добавление данных");
+            Console.WriteLine(Commands.delete + ": удаление данных");
+            Console.WriteLine(Commands.update + ": обновление данных");
+            Console.WriteLine(Commands.show + ": просмотр данных");
+            
+            string command;
 
-            // Удаление пользователя по логину
-            //Console.WriteLine("Введите логин для удаления:");
-            //var countDeletedRows = manager.DeleteUserByLogin(Console.ReadLine());
-            //Console.WriteLine("Количество удаленных строк: " + countDeletedRows);
+            do
+            {
+                Console.WriteLine("Напишите команду:");
+                command = Console.ReadLine();
+                Console.WriteLine();
 
-            //manager.ShowDataUsers();
 
-            // Создание пользователя
-            //Console.WriteLine("Введите логин для добавления:");
-            //var login = Console.ReadLine();
+                switch (command)
+                {
+                    case nameof(Commands.add):
+                    {
+                        Add();
+                        break;
+                    }
 
-            //Console.WriteLine("Введите имя для добавления:");
-            //var name = Console.ReadLine();
+                    case nameof(Commands.delete):
+                    {
+                        Delete();
+                        break;
+                    }
 
-            //manager.AddUser(login, name);
+                    case nameof(Commands.update):
+                    {
+                        Update();
+                        break;
+                    }
 
-            // Обновление имени пользователя по логину
-            Console.WriteLine("Введите логин для обновления:");
-            var loginChck = Console.ReadLine();
-
-            Console.WriteLine("Введите новое имя:");
-            var nameUpd = Console.ReadLine();
-
-            manager.UpdateUserByLogin(loginChck, nameUpd);
-
-            manager.ShowDataUsers();
+                    case nameof(Commands.show):
+                    {
+                        manager.ShowDataUsers();
+                        break;
+                    }
+                }
+            } while (command != nameof(Commands.stop));
 
             manager.Disconnect();
+        }
+
+        /// <summary>
+        /// Метод для создания пользователя
+        /// </summary>
+        public static void Add()
+        {
+            Console.WriteLine("Введите логин для добавления:");
+            var login = Console.ReadLine();
+
+            Console.WriteLine("Введите имя для добавления:");
+            var name = Console.ReadLine();
+
+            manager.AddUser(login, name);
+
+            manager.ShowDataUsers();
+        }
+
+        /// <summary>
+        /// Метод для удаления пользователя по логину
+        /// </summary>
+        public static void Delete()
+        {
+            Console.WriteLine("Введите логин для удаления:");
+            var countDeletedRows = manager.DeleteUserByLogin(Console.ReadLine());
+
+            Console.WriteLine("Количество удаленных строк: " + countDeletedRows);
+
+            manager.ShowDataUsers();
+        }
+
+        /// <summary>
+        /// Метод для обновления имени пользователя по логину
+        /// </summary>
+        public static void Update()
+        {
+            Console.WriteLine("Введите логин для обновления:");
+            var login = Console.ReadLine();
+
+            Console.WriteLine("Введите новое имя:");
+            var name = Console.ReadLine();
+
+            var count = manager.UpdateUserByLogin(login, name);
+            Console.WriteLine("Строк обновлено" + count);
+            manager.ShowDataUsers();
         }
     }
 }
