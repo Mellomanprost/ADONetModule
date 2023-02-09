@@ -22,7 +22,7 @@ namespace AdoNetLib
             return ds.Tables[0];
         }
 
-        // метод, возвращающий в «основную» программу объект для чтения результата
+        // метод, возвращающий в «основную» программу объект для чтения результата (для примера)
         public SqlDataReader SelectAllCommandReader(string table)
         {
             var command = new SqlCommand
@@ -40,7 +40,33 @@ namespace AdoNetLib
             }
 
             return null;
+        }
 
+        public int DeleteByColumn(string table, string column, string value)
+        {
+            var command = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = "delete from " + table + " where " + column + " = '" + value + "';",
+                Connection = connector.GetConnection()
+            };
+
+            return command.ExecuteNonQuery();
+        }
+
+        public int ExecProcedureAdding(string name, string login)
+        {
+            var command = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "AddingUserProc",
+                Connection = connector.GetConnection()
+            };
+
+            command.Parameters.Add(new SqlParameter("@Name", name));
+            command.Parameters.Add(new SqlParameter("@Login", login));
+
+            return command.ExecuteNonQuery();
         }
     }
 }
