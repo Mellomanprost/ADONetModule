@@ -68,5 +68,16 @@ namespace AdoNetLib
 
             return command.ExecuteNonQuery();
         }
+
+        public int UpdateByColumn(string table, string columntoupdate, string valueupdate, string columntocheck, string valuecheck)
+        {
+            var command = new SqlCommand
+            {
+                CommandType = CommandType.Text,
+                CommandText = $"update {table} set {columntoupdate} = '{valueupdate}' where {columntocheck} = '{valuecheck}';",
+                Connection = connector.GetConnection()
+            };
+            return command.ExecuteNonQuery();
+        }
     }
 }

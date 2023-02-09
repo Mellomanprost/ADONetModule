@@ -10,23 +10,34 @@
 
             manager.ShowDataUsers();
 
-            Console.WriteLine("Введите логин для удаления:");
+            // Удаление пользователя по логину
+            //Console.WriteLine("Введите логин для удаления:");
+            //var countDeletedRows = manager.DeleteUserByLogin(Console.ReadLine());
+            //Console.WriteLine("Количество удаленных строк: " + countDeletedRows);
 
-            var countDeletedRows = manager.DeleteUserByLogin(Console.ReadLine());
+            //manager.ShowDataUsers();
 
-            Console.WriteLine("Количество удаленных строк: " + countDeletedRows);
+            // Создание пользователя
+            //Console.WriteLine("Введите логин для добавления:");
+            //var login = Console.ReadLine();
+
+            //Console.WriteLine("Введите имя для добавления:");
+            //var name = Console.ReadLine();
+
+            //manager.AddUser(login, name);
+
+            // Обновление имени пользователя по логину
+            Console.WriteLine("Введите логин для обновления:");
+            var loginChck = Console.ReadLine();
+
+            Console.WriteLine("Введите новое имя:");
+            var nameUpd = Console.ReadLine();
+
+            manager.UpdateUserByLogin(loginChck, nameUpd);
 
             manager.ShowDataUsers();
 
             manager.Disconnect();
-
-            Console.WriteLine("Введите логин для добавления:");
-            var login = Console.ReadLine();
-
-            Console.WriteLine("Введите имя для добавления:");
-            var name = Console.ReadLine();
-
-            manager.AddUser(login, name);
         }
     }
 }

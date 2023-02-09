@@ -82,5 +82,10 @@ namespace AdoNetConsole
         {
             dbExecutor.ExecProcedureAdding(name, login);
         }
+
+        public void UpdateUserByLogin(string value, string newvalue)
+        {
+            dbExecutor.UpdateByColumn(userTable.Name, userTable.Fields[2], newvalue, userTable.Fields[1], value);
+        }
     }
 }
