@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNetLib", "AdoNetLib\AdoNetLib.csproj", "{C2A55C43-A188-4DEE-8D6E-6BD486191CEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoNetLib", "AdoNetLib\AdoNetLib.csproj", "{C2A55C43-A188-4DEE-8D6E-6BD486191CEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNetConsole", "AdoNetConsole\AdoNetConsole.csproj", "{75CC4473-A33A-4C77-BCBB-E6891137226F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoNetConsole", "AdoNetConsole\AdoNetConsole.csproj", "{75CC4473-A33A-4C77-BCBB-E6891137226F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectWithEntityFramework", "ProjectWithEntityFramework\ProjectWithEntityFramework.csproj", "{72CD9F72-5B1C-4A3F-A76B-882A7CB9C1F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{75CC4473-A33A-4C77-BCBB-E6891137226F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75CC4473-A33A-4C77-BCBB-E6891137226F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75CC4473-A33A-4C77-BCBB-E6891137226F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72CD9F72-5B1C-4A3F-A76B-882A7CB9C1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72CD9F72-5B1C-4A3F-A76B-882A7CB9C1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72CD9F72-5B1C-4A3F-A76B-882A7CB9C1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72CD9F72-5B1C-4A3F-A76B-882A7CB9C1F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
