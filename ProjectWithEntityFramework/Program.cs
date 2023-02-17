@@ -1,19 +1,25 @@
 ﻿namespace ProjectWithEntityFramework
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             using (var db = new AppContext())
             {
-                var user1 = new User { Name = "Arthur", Role = "Admin" };
-                var user2 = new User { Name = "Klim", Role = "User" };
+                // Выбор пользователей с ролью "Admin"
+                var admins = db.Users.Where(user => user.Role == "Admin").ToList();
+                foreach (var item in admins)
+                {
+                    
+                }
+                //db.Users.RemoveRange(admins);
 
-                db.Users.Add(user1);
-                db.Users.Add(user2);
+                // Выбор первого пользователя в таблице
+                //var firstUser = db.Users.FirstOrDefault();
+                //firstUser.Email = "simpleemail@gmail.com";
                 db.SaveChanges();
             }
-            
+
         }
     }
 }
