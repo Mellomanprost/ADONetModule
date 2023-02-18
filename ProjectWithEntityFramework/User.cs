@@ -19,6 +19,9 @@ namespace ProjectWithEntityFramework
         //public Company? Company { get; set; }
 
         // Навигационное свойство
-        public UserCredential? UserCredential { get; set; }
+        //public UserCredential? UserCredential { get; set; }
+
+        // Навигационное свойство
+        public List<Topic> Topics { get; set; } = new List<Topic>();
     }
 }

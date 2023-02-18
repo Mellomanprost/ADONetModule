@@ -14,8 +14,10 @@ namespace ProjectWithEntityFramework
 
         //public DbSet<Company> Companies { get; set; }
 
+        public DbSet<Topic> Topics { get; set; }
+
         // Объекты таблицы UserCredentials
-        public DbSet<UserCredential> UserCredentials { get; set; }
+        //public DbSet<UserCredential> UserCredentials { get; set; }
 
         public AppContext()
         {
