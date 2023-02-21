@@ -6,6 +6,11 @@
         {
             var userRepos = new UserRepository();
             var bookRepos = new BookRepository();
+            var genreRepos = new GenreRepository();
+            var authorRepos = new AuthorRepository();
+
+            Console.WriteLine("Добро пожаловать в систему управления электронной библиотекой!");
+
             using (var db = new AppContext())
             {
                 //userRepos.AddUser();
@@ -16,20 +21,9 @@
 
                 var author = new Author() { Name = "Артур Конан", Surname = "Дойл", Books = null};
                 var author2 = new Author() { Name = "Теодор", Surname = "Драйзер", Books = null};
-                //db.Authors.AddRange(author,author2);
-                //db.SaveChanges();
-
 
                 var genres1 = new Genre() { Name = "Роман" };
                 var genres2 = new Genre() { Name = "Детектив" };
-
-                //db.Genres.AddRange(genres1, genres2);
-
-                //db.SaveChanges();
-
-
-                //bookRepos.AddBook("Стоик", 1982);
-                //bookRepos.AddBook("Шерлок Холмс", 1986);
 
                 var book1 = new Book() { Title = "Стоик", YearOfIssue = 1947, InStock = true};
                 var book2 = new Book() { Title = "Шерлок Холмс", YearOfIssue = 1892, InStock = true};
