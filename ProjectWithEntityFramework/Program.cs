@@ -55,25 +55,25 @@
 
                 // Many to many
 
-                var topic1 = new Topic() { Name = "Раздел 1" };
-                var topic2 = new Topic() { Name = "Раздел 2" };
-                var topic3 = new Topic() { Name = "Раздел 3" };
+                //var topic1 = new Topic() { Name = "Раздел 1" };
+                //var topic2 = new Topic() { Name = "Раздел 2" };
+                //var topic3 = new Topic() { Name = "Раздел 3" };
 
-                var user1 = new User() { Name = "Пользователь 1", Email = "gmail@gmail.com" };
-                var user2 = new User() { Name = "Пользователь 2", Email = "gmail2@gmail.com" };
-                var user3 = new User() { Name = "Пользователь 3", Email = "gmail3@gmail.com" };
-                var user4 = new User() { Name = "Пользователь 4", Email = "gmail4@gmail.com" };
+                //var user1 = new User() { Name = "Пользователь 1", Email = "gmail@gmail.com" };
+                //var user2 = new User() { Name = "Пользователь 2", Email = "gmail2@gmail.com" };
+                //var user3 = new User() { Name = "Пользователь 3", Email = "gmail3@gmail.com" };
+                //var user4 = new User() { Name = "Пользователь 4", Email = "gmail4@gmail.com" };
 
-                topic1.Users.AddRange(new[] { user3, user4 });
-                topic2.Users.AddRange(new[] { user1, user2 });
+                //topic1.Users.AddRange(new[] { user3, user4 });
+                //topic2.Users.AddRange(new[] { user1, user2 });
 
-                user1.Topics.AddRange(new[] { topic1, topic3});
+                //user1.Topics.AddRange(new[] { topic1, topic3});
 
-                db.Topics.AddRange(topic1, topic2, topic3);
+                //db.Topics.AddRange(topic1, topic2, topic3);
 
-                db.Users.AddRange(user1, user2, user3, user4);
+                //db.Users.AddRange(user1, user2, user3, user4);
 
-                db.SaveChanges();
+                //db.SaveChanges();
             }
 
         }

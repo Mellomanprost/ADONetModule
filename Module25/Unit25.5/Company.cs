@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectWithEntityFramework
+namespace Unit25._5
 {
-    public class Company
+    internal class Company
     {
         public int Id { get; set; }
         public string? Name { get; set; }
 
-        public List<User>? Users { get; set; } = new List<User>();
+        // Навигационное свойство
+        public List<User> Users { get; set; } = new List<User>();
     }
 }

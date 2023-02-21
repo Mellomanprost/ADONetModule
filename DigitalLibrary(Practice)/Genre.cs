@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectWithEntityFramework
+namespace DigitalLibrary.Practice
 {
-    public class Company
+    public class Genre
     {
         public int Id { get; set; }
         public string? Name { get; set; }
 
-        public List<User>? Users { get; set; } = new List<User>();
+        // Навигационное свойство
+        public List<Book> Books { get; set; } = new List<Book>();
     }
 }

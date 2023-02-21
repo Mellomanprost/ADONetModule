@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectWithEntityFramework
+namespace Unit25._5
 {
-    public class User
+    internal class User
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -16,12 +16,6 @@ namespace ProjectWithEntityFramework
         // Внешний ключ
         public int CompanyId { get; set; }
         // Навигационное свойство
-        public Company? Company { get; set; }
-
-        // Навигационное свойство
-        //public UserCredential? UserCredential { get; set; }
-
-        //// Навигационное свойство
-        //public List<Topic> Topics { get; set; } = new List<Topic>();
+        public Company Company { get; set; }
     }
 }

@@ -8,18 +8,17 @@ namespace DigitalLibrary.Practice
 {
     public class UserRepository
     {
-
         // Метод для выбора пользователя из БД по его идентификатору
-        public void SelectUser(int id)
+        public void SelectUser()
         {
+            Console.WriteLine("Введите ID пользователя:");
+            var userId = Convert.ToInt32(Console.ReadLine());
+
             using (var db = new AppContext())
             {
-                //Выбор пользователей с ролью "Admin"
-                //var admins = db.Users.Where(u => u.Id > 5).ToList();
-
-                // Выбор первого пользователя в таблице
-                var user = db.Users.FirstOrDefault(u => u.Id == id);
-                Console.WriteLine($"Пользователь с номером Id = {id}:\n{user.Name}, {user.Email}");
+                // Выбор пользователя в таблице
+                var user = db.Users.FirstOrDefault(u => u.Id == userId);
+                Console.WriteLine($"Пользователь с номером Id = {userId}:\n{user.Name}, {user.Email}");
             }
         }
 
@@ -38,8 +37,13 @@ namespace DigitalLibrary.Practice
         }
 
         // Метод для добавления пользователя в БД
-        public void AddUser(string name, string email)
+        public void AddUser()
         {
+            Console.WriteLine("Введите имя пользователя:");
+            var name = Console.ReadLine();
+            Console.WriteLine("Введите электронный адрес:");
+            var email = Console.ReadLine();
+
             using (var db = new AppContext())
             {
                 var user = new User { Name = name, Email = email };
@@ -49,8 +53,11 @@ namespace DigitalLibrary.Practice
         }
 
         // Метод для удаления пользователя из БД
-        public void RemoveUser(string name)
+        public void RemoveUser()
         {
+            Console.WriteLine("Введите имя пользователя для удаления:");
+            var name = Console.ReadLine();
+
             using (var db = new AppContext())
             {
                 var user = db.Users.Where(u => u.Name == name).ToList();
@@ -59,5 +66,20 @@ namespace DigitalLibrary.Practice
             }
         }
 
+        // Метод для обновления имени пользователя
+        public void UpdateUserName()
+        {
+            Console.WriteLine("Введите ID пользователя, имя которого вы хотите изменить:");
+            var id = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите новое имя:");
+            var name = Console.ReadLine();
+
+            using (var db = new AppContext())
+            {
+                var user = db.Users.FirstOrDefault(u => u.Id == id);
+                user.Name = name;
+                db.SaveChanges();
+            }
+        }
     }
 }

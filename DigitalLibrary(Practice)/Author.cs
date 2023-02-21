@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectWithEntityFramework
+namespace DigitalLibrary.Practice
 {
-    public class Company
+    public class Author
     {
         public int Id { get; set; }
         public string? Name { get; set; }
+        public string? Surname { get; set; }
 
-        public List<User>? Users { get; set; } = new List<User>();
+        public List<Book>? Books { get; set;  } = new List<Book>();
     }
 }
