@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DigitalLibrary.Practice
+namespace Unit25._5._2
 {
-    public class Genre
+    internal class Company
     {
         public int Id { get; set; }
         public string? Name { get; set; }
 
         // Навигационное свойство
-        public List<Book>? Books { get; set; } = new List<Book>();
+        public List<User> Users { get; set; } = new List<User>();
     }
 }

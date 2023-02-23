@@ -1,128 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace DigitalLibrary.Practice
+namespace DigitalLibrary.Practice.Variant2
 {
     public class BookRepository
     {
-        #region Версия для заполнения через консоль
-
-        //// Метод для выбора книги из БД по её идентификатору
-        //public void SelectBook()
-        //{
-        //    Console.WriteLine("Введите Id книги:");
-        //    var id = Convert.ToInt32(Console.ReadLine());
-
-        //    using (var db = new AppContext())
-        //    {
-        //        // Выбор книги в таблице
-        //        var book = db.Books.FirstOrDefault(u => u.Id == id);
-        //        Console.WriteLine($"Книга с номером Id = {id} - \"{book.Title}\", ({book.YearOfIssue})");
-        //    }
-        //}
-
-        //// Метод для выбора всех книг из БД
-        //public void SelectAllBooks()
-        //{
-        //    using (var db = new AppContext())
-        //    {
-        //        var allBooks = db.Books.ToList();
-        //        Console.WriteLine("Список всех книг:");
-        //        foreach (var book in allBooks)
-        //        {
-        //            Console.WriteLine($"{book.Id}. \"{book.Title}\", ({book.YearOfIssue})");
-        //        }
-        //    }
-        //}
-
-        //// Метод для добавления книги в БД
-        //public void AddBook()
-        //{
-        //    Console.WriteLine("Введите название книги:");
-        //    var title = Console.ReadLine();
-        //    Console.WriteLine("Введите год выпуска книги:");
-        //    var yearofissue = Convert.ToInt32(Console.ReadLine());
-
-        //    using (var db = new AppContext())
-        //    {
-        //        var book = new Book { Title = title, YearOfIssue = yearofissue };
-        //        db.Books.Add(book);
-        //        db.SaveChanges();
-        //    }
-        //}
-
-        //// Метод для удаления книги из БД
-        //public void RemoveBook()
-        //{
-        //    Console.WriteLine("Введите название книги, которую хотите удалить:");
-        //    var title = Console.ReadLine();
-
-        //    using (var db = new AppContext())
-        //    {
-        //        var book = db.Books.Where(b => b.Title == title).ToList();
-        //        db.Books.RemoveRange(book);
-        //        db.SaveChanges();
-        //    }
-        //}
-
-        //// Метод для обновления года выпуска книги по Id
-        //public void UpdateYearOfIssue()
-        //{
-        //    Console.WriteLine("Введите Id книги, год выпуска которой нужно изменить:");
-        //    var id = Convert.ToInt32(Console.ReadLine());
-        //    Console.WriteLine("Введите новый год выпуска:");
-        //    var yearofissue = Convert.ToInt32(Console.ReadLine());
-
-        //    using (var db = new AppContext())
-        //    {
-        //        var book = db.Books.FirstOrDefault(b => b.Id == id);
-        //        book.YearOfIssue = yearofissue;
-        //        db.SaveChanges();
-        //    }
-        //}
-
-        //// Метод для выдачи книги пользователю на руки
-        //public void GetOnHand()
-        //{
-        //    Console.WriteLine("Введите свой электронный адрес:");
-        //    var email = Console.ReadLine();
-        //    if (email == null)
-        //        Console.WriteLine("Ошибка! Электронный адрес не указан!");
-
-        //    Console.WriteLine("Введите название книги:");
-        //    var bookTitle = Console.ReadLine();
-        //    if (bookTitle == null)
-        //        Console.WriteLine("Ошибка! Название книги не указано!");
-
-        //    using (var db = new AppContext())
-        //    {
-        //        var book = db.Books.FirstOrDefault(b => b.Title == bookTitle);
-        //        var user = db.Users.FirstOrDefault(u => u.Email == email);
-        //        if (book != null && book.InStock)
-        //        {
-        //            user.BooksOnHand += bookTitle + " ";
-        //            //book.UserId = user.Id;
-        //            book.InStock = false;
-        //            db.SaveChanges();
-        //        }
-        //        else
-        //            Console.WriteLine("Такой книги нет в наличии!");
-        //    }
-        //}
-
-        //// Метод для получения списка книг определенного жанра и вышедших между определенными годами
-        //public void GetBooksListInPeriod()
-        //{
-
-        //}
-
-        #endregion
-
-        #region Версия для заполнения через компиляцию
-
         // Метод для выбора книги из БД по её идентификатору
         public void SelectBook(int id)
         {
@@ -149,22 +30,22 @@ namespace DigitalLibrary.Practice
         }
 
         // Метод для добавления книги в БД
-        public void AddBook(string title, int yearofissue)
+        public void AddBook(string title, int yearofissue, string author, string genre)
         {
             using (var db = new AppContext())
             {
-                var book = new Book { Title = title, YearOfIssue = yearofissue, InStock = true};
+                var book = new Book { Title = title, YearOfIssue = yearofissue, Author = author, Genre = genre, InStock = true };
                 db.Books.Add(book);
                 db.SaveChanges();
             }
         }
 
         // Метод для удаления книги из БД
-        public void RemoveBook(string title)
+        public void RemoveBook(string title, string author)
         {
             using (var db = new AppContext())
             {
-                var book = db.Books.FirstOrDefault(b => b.Title == title);
+                var book = db.Books.FirstOrDefault(b => b.Title == title && b.Author == author);
                 db.Books.Remove(book);
                 db.SaveChanges();
             }
@@ -190,7 +71,7 @@ namespace DigitalLibrary.Practice
                 var user = db.Users.FirstOrDefault(u => u.Email == email);
                 if (book != null && book.InStock)
                 {
-                    user.BooksOnHand += bookTitle + " ";    //добавляет книгу пользователю
+                    user.BooksOnHand += bookTitle + ";";    //добавляет книгу пользователю
                     book.InStock = false;   //изменяет графу в наличии
                     book.User = user;   //добавляет информацию о пользователе в таблицу книги
                     db.SaveChanges();
@@ -206,12 +87,12 @@ namespace DigitalLibrary.Practice
             using (var db = new AppContext())
             {
                 var books = db.Books
-                    .Where(b => b.YearOfIssue > minYear && b.YearOfIssue < maxYear && b.Genre.Name != null && b.Genre.Name == genre)
+                    .Where(b => b.YearOfIssue > minYear && b.YearOfIssue < maxYear && b.Genre == genre)
                     .ToList();
                 Console.WriteLine();
                 foreach (var book in books)
                 {
-                    Console.WriteLine(book.Title + " " + book.Genre.Name);
+                    Console.WriteLine(book.Title + " " + book.Genre);
                 }
             }
         }
@@ -222,7 +103,7 @@ namespace DigitalLibrary.Practice
             using (var db = new AppContext())
             {
                 var countBooks = db.Books
-                    .Where(b => b.Author.Surname != null && b.Author.Surname == author)
+                    .Where(b => b.Author == author)
                     .Count();
                 Console.WriteLine($"Количество всех книг автора {author}: {countBooks}");
             }
@@ -234,7 +115,7 @@ namespace DigitalLibrary.Practice
             using (var db = new AppContext())
             {
                 var countBooks = db.Books
-                    .Where(b => b.Genre.Name != null && b.Genre.Name == genre)
+                    .Where(b => b.Genre == genre)
                     .Count();
                 Console.WriteLine($"Количество всех книг жанра {genre}: {countBooks}");
             }
@@ -245,10 +126,11 @@ namespace DigitalLibrary.Practice
         {
             using (var db = new AppContext())
             {
-                var contTitle = db.Books.Select(b => b.Title).Contains(title);
+                var contTitle = db.Books
+                    .Select(b => b.Title)
+                    .Contains(title);
                 var contAuthor = db.Books
-                    .Join(db.Authors, b => b.AuthorId, a => a.Id, (a, b) => new { AuthorSurname = b.Surname })
-                    .Select(b => b.AuthorSurname)
+                    .Select(b => b.Author)
                     .Contains(author);
                 if (contAuthor && contTitle)
                 {
@@ -270,8 +152,14 @@ namespace DigitalLibrary.Practice
             {
                 var booksOnHand = db.Users
                     .Where(u => u.Name == user)
-                    .Select(b => b.BooksOnHand).Contains(title);
-                if (booksOnHand)
+                    .Select(b => b.BooksOnHand)
+                    .ToList()
+                    .LastOrDefault()
+                    .Split(';');
+
+                var flag = booksOnHand.Contains(title);
+
+                if (flag)
                 {
                     Console.WriteLine($"Книга {title} есть на руках у пользователя {user}!");
                     return true;
@@ -293,13 +181,18 @@ namespace DigitalLibrary.Practice
                     .FirstOrDefault(u => u.Name == user);
                 if (userName != null && userName.BooksOnHand != null)
                 {
-                    var countBooks = userName.BooksOnHand.Count();
-                    Console.WriteLine($"Количество книг у пользователя {userName.Name}: {countBooks}");
+                    var booksOnHand = db.Users
+                        .Where(u => u.Name == user)
+                        .Select(b => b.BooksOnHand)
+                        .ToList()
+                        .LastOrDefault()
+                        .Split(';');
+                    var count = booksOnHand.Count() - 1;    // отнимаем 1, т.к. последний элемент всегда пустой
+                    Console.WriteLine($"Количество книг у пользователя {userName.Name}: {count}");
                 }
                 else
                     Console.WriteLine("Ошибка!");
             }
-
         }
 
         // 7. Метод для получения последней вышедшей книги.
@@ -344,7 +237,5 @@ namespace DigitalLibrary.Practice
                 }
             }
         }
-
-        #endregion
     }
 }

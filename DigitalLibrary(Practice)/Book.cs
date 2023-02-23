@@ -15,7 +15,7 @@ namespace DigitalLibrary.Practice
 
         // Навигационные свойства
         public Author? Author { get; set; }
-        public List<Genre> Genres { get; set; } = new List<Genre>();
-        //public User? User { get; set; }
+        public Genre? Genre { get; set; }
+        public User? User { get; set; }
     }
 }
