@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SF.EF.Webservice", "SF.EF.Webservice\SF.EF.Webservice.csproj", "{CEDB0C6F-659E-427B-B9F1-0A5638B1DB66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SF.EF.DAL", "SF.EF.DAL\SF.EF.DAL.csproj", "{70E6BF2E-5777-423E-B2D5-C5BC5E46C643}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEDB0C6F-659E-427B-B9F1-0A5638B1DB66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDB0C6F-659E-427B-B9F1-0A5638B1DB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDB0C6F-659E-427B-B9F1-0A5638B1DB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDB0C6F-659E-427B-B9F1-0A5638B1DB66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70E6BF2E-5777-423E-B2D5-C5BC5E46C643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70E6BF2E-5777-423E-B2D5-C5BC5E46C643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70E6BF2E-5777-423E-B2D5-C5BC5E46C643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70E6BF2E-5777-423E-B2D5-C5BC5E46C643}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AC44A4A-2F16-42AF-BFA9-7F8886D34284}
+	EndGlobalSection
+EndGlobal

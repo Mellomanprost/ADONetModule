@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace DigitalLibrary.Practice.Variant2
+﻿namespace DigitalLibrary.Practice.Variant2
 {
     public class BookRepository
     {
